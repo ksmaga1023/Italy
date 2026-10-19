@@ -39,6 +39,10 @@ body {
   overflow-wrap: break-word;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 a {
   color: inherit;
   -webkit-tap-highlight-color: transparent;
@@ -59,11 +63,11 @@ a:focus-visible {
   text-transform: uppercase;
 }
 
-/* PIERWSZY EKRAN */
+/* EKRAN POWITALNY */
 
 .hero {
-  min-height: 88svh;
-  min-height: 88vh;
+  min-height: calc(100vh - 38px);
+  min-height: calc(100svh - 38px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,6 +164,7 @@ h1 {
   letter-spacing: .1em;
   text-transform: uppercase;
   transition: background .2s, color .2s;
+  cursor: pointer;
 }
 
 .button:hover {
@@ -167,7 +172,7 @@ h1 {
   color: white;
 }
 
-/* GŁÓWNA TREŚĆ */
+/* TREŚĆ STRONY */
 
 main {
   width: 100%;
@@ -297,7 +302,7 @@ strong {
   overflow-wrap: anywhere;
 }
 
-/* POTWIERDZENIE OBECNOŚCI */
+/* KONTAKT */
 
 .rsvp {
   background: var(--olive);
@@ -340,14 +345,13 @@ footer .small {
   margin-top: 6px;
 }
 
-/* TABLETY I KOMPUTERY */
+.back-home {
+  margin-top: 20px;
+}
+
+/* WIĘKSZE EKRANY */
 
 @media (min-width: 650px) {
-  .hero {
-    min-height: 78vh;
-    padding: 65px 25px;
-  }
-
   .hero::before,
   .hero::after {
     width: 220px;
@@ -362,11 +366,6 @@ footer .small {
   .hero::after {
     right: -140px;
     bottom: 3%;
-  }
-
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: .2em;
   }
 
   main {
@@ -401,7 +400,6 @@ footer .small {
 
 @media (max-width: 480px) {
   .hero {
-    min-height: 88svh;
     padding: 35px 22px;
   }
 
@@ -491,267 +489,305 @@ footer .small {
 
 <body>
 
-<div class="top-note">Świętujemy miłość w sercu Włoch</div>
+<!-- EKRAN POWITALNY: widoczny od razu -->
 
-<header class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">Z radością zapraszamy na nasz ślub</div>
+<div id="strona-glowna">
+  <div class="top-note">Świętujemy miłość w sercu Włoch</div>
 
-    <h1>
-      Izabela <span class="ampersand">&amp;</span><br>
-      Karol
-    </h1>
+  <header class="hero">
+    <div class="hero-inner">
 
-    <p>
-      Mała podróż, wielka miłość i kilka pięknych dni
-      spędzonych razem w słonecznej Italii.
-    </p>
+      <div class="eyebrow">
+        Z radością zapraszamy na nasz ślub
+      </div>
 
-    <div class="place-line">
-      Umbria, Włochy · Apartamenty Il Sodino
+      <h1>
+        Izabela <span class="ampersand">&amp;</span><br>
+        Karol
+      </h1>
+
+      <p>
+        Mała podróż, wielka miłość i kilka pięknych dni
+        spędzonych razem w słonecznej Italii.
+      </p>
+
+      <div class="place-line">
+        Umbria, Włochy · Apartamenty Il Sodino
+      </div>
+
+      <a class="button" href="#szczegoly"
+         onclick="pokazSzczegoly(event)">
+        Poznaj szczegóły ↓
+      </a>
+
     </div>
+  </header>
+</div>
 
-    <a class="button" href="#powitanie">
-      Poznaj szczegóły ↓
-    </a>
-  </div>
-</header>
+<!-- CAŁA DALSZA STRONA: ukryta do kliknięcia -->
 
-<main>
+<div id="szczegoly" hidden>
 
-  <section id="powitanie" class="center">
-    <div class="section-label">Cieszymy się, że tu jesteś</div>
-    <h2>Do zobaczenia we Włoszech!</h2>
-    <div class="divider-ornament">❧</div>
+  <div class="top-note">Izabela &amp; Karol · 9–12 września 2027</div>
 
-    <p>
-      Marzymy o tym, by powiedzieć sobie „tak” w pięknym miejscu,
-      w otoczeniu włoskich wzgórz, dobrego jedzenia i najbliższych nam osób.
-    </p>
+  <main>
 
-    <p>
-      Chcemy przeżyć te dni spokojnie, bez pośpiechu — za to z mnóstwem
-      rozmów, śmiechu i wspólnych wspomnień. Tutaj znajdziesz najważniejsze
-      informacje, które pomogą Ci zaplanować pobyt.
-    </p>
-  </section>
+    <section id="powitanie" class="center">
+      <div class="section-label">Cieszymy się, że tu jesteś</div>
+      <h2>Do zobaczenia we Włoszech!</h2>
+      <div class="divider-ornament">❧</div>
 
-  <section id="informacje">
-    <div class="section-label">Najważniejsze informacje</div>
-    <h2>Gdzie i kiedy?</h2>
+      <p>
+        Marzymy o tym, by powiedzieć sobie „tak” w pięknym miejscu,
+        w otoczeniu włoskich wzgórz, dobrego jedzenia i najbliższych nam osób.
+      </p>
 
-    <div class="info-grid">
+      <p>
+        Chcemy przeżyć te dni spokojnie, bez pośpiechu — za to z mnóstwem
+        rozmów, śmiechu i wspólnych wspomnień. Tutaj znajdziesz najważniejsze
+        informacje, które pomogą Ci zaplanować pobyt.
+      </p>
+    </section>
+
+    <section id="informacje">
+      <div class="section-label">Najważniejsze informacje</div>
+      <h2>Gdzie i kiedy?</h2>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>📍 Miejsce</h3>
+          <p><strong>Apartamenty Il Sodino</strong><br>Umbria, Włochy</p>
+
+          <a class="button"
+             href="https://www.google.com/maps/search/?api=1&amp;query=Il+Sodino+Umbria+Italy"
+             target="_blank" rel="noopener noreferrer">
+            Otwórz mapę
+          </a>
+
+          <p style="margin-top:12px">
+            <a class="text-link" href="https://ilsodino.it/"
+               target="_blank" rel="noopener noreferrer">
+              Strona internetowa obiektu ↗
+            </a>
+          </p>
+
+          <p>
+            <a class="text-link" href="https://www.instagram.com/ilsodino1738/"
+               target="_blank" rel="noopener noreferrer">
+              Instagram ↗
+            </a>
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3>♡ Data</h3>
+          <p><strong>9–12 września 2027</strong></p>
+          <p>Cztery dni wspólnego świętowania.</p>
+          <p class="small">
+            Ceremonia ślubna planowana jest na 10 września 2027 r.
+            Godziny i szczegółowy harmonogram podamy bliżej terminu.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan">
+      <div class="section-label">Plan świętowania</div>
+      <h2>Jak spędzimy ten czas?</h2>
+
+      <p>
+        Chcemy, żeby te dni były okazją nie tylko do świętowania,
+        ale też do odpoczynku i cieszenia się włoskim klimatem.
+      </p>
+
+      <ul class="timeline">
+        <li>
+          <time>09.09<br>czwartek</time>
+          <div>
+            <strong>Przyjazdy i powitanie</strong>
+            <span class="small">
+              Spokojne rozpakowanie, pierwsze spotkania i wspólny wieczór.
+            </span>
+          </div>
+        </li>
+
+        <li>
+          <time>10.09<br>piątek</time>
+          <div>
+            <strong>Nasz dzień!</strong>
+            <span class="small">
+              Ceremonia, wspólny toast, kolacja i zabawa do wieczora.
+            </span>
+          </div>
+        </li>
+
+        <li>
+          <time>11.09<br>sobota</time>
+          <div>
+            <strong>Chill, basen i Pizza Party</strong>
+            <span class="small">
+              Relaks przy basenie, włoskie jedzenie, pizza i wspólny czas
+              bez pośpiechu. Łapiemy słońce, odpoczywamy i cieszymy się,
+              że jesteśmy razem!
+            </span>
+          </div>
+        </li>
+
+        <li>
+          <time>12.09<br>niedziela</time>
+          <div>
+            <strong>Włoskie pożegnanie</strong>
+            <span class="small">
+              Śniadanie, kawa i ostatnie chwile razem przed powrotem do domu.
+            </span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="podroz">
+      <div class="section-label">Praktycznie</div>
+      <h2>Mała ściąga przed podróżą</h2>
+
       <div class="info-card">
-        <h3>📍 Miejsce</h3>
-        <p><strong>Apartamenty Il Sodino</strong><br>Umbria, Włochy</p>
+        <h3>✈️ Jak dolecieć?</h3>
+        <p>Do Il Sodino można dotrzeć z kilku lotnisk:</p>
 
-        <a class="button"
-           href="https://www.google.com/maps/search/?api=1&amp;query=Il+Sodino+Umbria+Italy"
-           target="_blank" rel="noopener noreferrer">
-          Otwórz mapę
-        </a>
+        <p>
+          <strong>Perugia (PEG) — ok. 35 km</strong><br>
+          Najbliższe lotnisko, około 30 minut jazdy samochodem.
+        </p>
 
-        <p style="margin-top:12px">
+        <p>
+          <strong>Rzym Fiumicino (FCO) — ok. 210 km</strong><br>
+          Większe lotnisko, około 2 godz. 20 min jazdy samochodem.
+        </p>
+
+        <p>
+          <strong>Florencja (FLR) — ok. 150 km</strong><br>
+          Lotnisko w Toskanii, około 2 godz. jazdy samochodem.
+        </p>
+
+        <p>
+          Jeśli będziecie potrzebować pomocy w zaplanowaniu podróży
+          lub w czymkolwiek innym, dawajcie śmiało znać — chętnie pomożemy! ❤️
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>🏡 Nocleg</h3>
+
+        <p>
+          Naszym domem na te kilka dni będzie Il Sodino 1738 — historyczny,
+          kamienny obiekt z 1738 roku, położony niedaleko Jeziora
+          Trazymeńskiego, w pięknej Umbrii.
+        </p>
+
+        <p>
+          Na miejscu znajduje się 6 niezależnych apartamentów.
+          Do dyspozycji gości są między innymi basen, ogród, parking,
+          Wi-Fi oraz rowery.
+        </p>
+
+        <p><strong>Zameldowanie i wymeldowanie</strong></p>
+        <p>Check-in: 16:00–19:00</p>
+        <p>Check-out: 10:00</p>
+
+        <p>
           <a class="text-link" href="https://ilsodino.it/"
              target="_blank" rel="noopener noreferrer">
             Strona internetowa obiektu ↗
           </a>
         </p>
-
-        <p>
-          <a class="text-link" href="https://www.instagram.com/ilsodino1738/"
-             target="_blank" rel="noopener noreferrer">
-            Instagram ↗
-          </a>
-        </p>
       </div>
 
       <div class="info-card">
-        <h3>♡ Data</h3>
-        <p><strong>9–12 września 2027</strong></p>
-        <p>Cztery dni wspólnego świętowania.</p>
-        <p class="small">
-          Ceremonia ślubna planowana jest na 10 września 2027 r.
-          Godziny i szczegółowy harmonogram podamy bliżej terminu.
+        <h3>☀️ Co zabrać?</h3>
+
+        <p>
+          Postaw na coś, w czym czujesz się pięknie i wygodnie.
+          Bez sztywnego dress code’u — elegancko, swobodnie i po swojemu.
+          Najważniejsze, żebyście czuli się dobrze i mogli w pełni cieszyć
+          się wspólnym świętowaniem. ❤️ Pamiętajcie też, że spędzimy razem
+          kilka dni we włoskim klimacie, więc przydadzą się zarówno
+          stylizacje na wyjątkowy wieczór, jak i coś luźniejszego
+          na odpoczynek przy basenie.
         </p>
+
+        <div>
+          <span class="pill">słońce</span>
+          <span class="pill">wygodne buty</span>
+          <span class="pill">strój kąpielowy</span>
+          <span class="pill">dobry humor</span>
+          <span class="pill">włoski luz</span>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="plan">
-    <div class="section-label">Plan świętowania</div>
-    <h2>Jak spędzimy ten czas?</h2>
-
-    <p>
-      Chcemy, żeby te dni były okazją nie tylko do świętowania,
-      ale też do odpoczynku i cieszenia się włoskim klimatem.
-    </p>
-
-    <ul class="timeline">
-      <li>
-        <time>09.09<br>czwartek</time>
-        <div>
-          <strong>Przyjazdy i powitanie</strong>
-          <span class="small">
-            Spokojne rozpakowanie, pierwsze spotkania i wspólny wieczór.
-          </span>
-        </div>
-      </li>
-
-      <li>
-        <time>10.09<br>piątek</time>
-        <div>
-          <strong>Nasz dzień!</strong>
-          <span class="small">
-            Ceremonia, wspólny toast, kolacja i zabawa do wieczora.
-          </span>
-        </div>
-      </li>
-
-      <li>
-        <time>11.09<br>sobota</time>
-        <div>
-          <strong>Chill, basen i Pizza Party</strong>
-          <span class="small">
-            Relaks przy basenie, włoskie jedzenie, pizza i wspólny czas
-            bez pośpiechu. Łapiemy słońce, odpoczywamy i cieszymy się,
-            że jesteśmy razem!
-          </span>
-        </div>
-      </li>
-
-      <li>
-        <time>12.09<br>niedziela</time>
-        <div>
-          <strong>Włoskie pożegnanie</strong>
-          <span class="small">
-            Śniadanie, kawa i ostatnie chwile razem przed powrotem do domu.
-          </span>
-        </div>
-      </li>
-    </ul>
-  </section>
-
-  <section id="podroz">
-    <div class="section-label">Praktycznie</div>
-    <h2>Mała ściąga przed podróżą</h2>
-
-    <div class="info-card">
-      <h3>✈️ Jak dolecieć?</h3>
-      <p>Do Il Sodino można dotrzeć z kilku lotnisk:</p>
+    <section id="odserca">
+      <div class="section-label">Od serca</div>
+      <h2>Najważniejsza jest Wasza obecność</h2>
 
       <p>
-        <strong>Perugia (PEG) — ok. 35 km</strong><br>
-        Najbliższe lotnisko, około 30 minut jazdy samochodem.
+        Najbardziej cieszymy się na to, że spędzimy z Wami ten wyjątkowy czas.
+        Nie możemy doczekać się wspólnych toastów, rozmów, śmiechu i wspomnień,
+        do których będziemy wracać przez długie lata.
       </p>
+    </section>
+
+    <section class="rsvp" id="kontakt">
+      <div class="section-label">Daj nam znać</div>
+      <h2>Potwierdzenie obecności</h2>
 
       <p>
-        <strong>Rzym Fiumicino (FCO) — ok. 210 km</strong><br>
-        Większe lotnisko, około 2 godz. 20 min jazdy samochodem.
+        Będziemy bardzo wdzięczni za potwierdzenie obecności tak szybko,
+        jak to możliwe, najlepiej jeszcze przed marcem 2027 roku.
+        Pomoże nam to odpowiednio zaplanować te kilka wyjątkowych dni
+        i dopracować wszystkie szczegóły, abyśmy mogli w pełni cieszyć
+        się tym pięknym czasem razem z Wami! 💌
       </p>
+    </section>
 
-      <p>
-        <strong>Florencja (FLR) — ok. 150 km</strong><br>
-        Lotnisko w Toskanii, około 2 godz. jazdy samochodem.
-      </p>
+  </main>
 
-      <p>
-        Jeśli będziecie potrzebować pomocy w zaplanowaniu podróży
-        lub w czymkolwiek innym, dawajcie śmiało znać — chętnie pomożemy! ❤️
-      </p>
+  <footer>
+    <div>Do zobaczenia w słonecznej Umbrii <span class="heart">♥</span></div>
+    <div class="small">Izabela &amp; Karol · 2027</div>
+
+    <div class="small" style="margin-top:12px">
+      <a href="https://ilsodino.it/"
+         target="_blank" rel="noopener noreferrer">Il Sodino</a>
+      ·
+      <a href="https://www.instagram.com/ilsodino1738/"
+         target="_blank" rel="noopener noreferrer">Instagram</a>
     </div>
 
-    <div class="info-card">
-      <h3>🏡 Nocleg</h3>
+    <button class="button back-home" type="button" onclick="pokazPoczatek()">
+      ↑ Wróć na początek
+    </button>
+  </footer>
 
-      <p>
-        Naszym domem na te kilka dni będzie IL Sodino 1738 — historyczny,
-        kamienny obiekt z 1738 roku, położony niedaleko Jeziora
-        Trazymeńskiego, w pięknej Umbrii.
-      </p>
+</div>
 
-      <p>
-        Na miejscu znajduje się 6 niezależnych apartamentów.
-        Do dyspozycji gości są między innymi basen, ogród, parking,
-        Wi-Fi oraz rowery.
-      </p>
+<script>
+function pokazSzczegoly(event) {
+  if (event) event.preventDefault();
 
-      <p><strong>Zameldowanie i wymeldowanie</strong></p>
-      <p>Check-in: 16:00–19:00</p>
-      <p>Check-out: 10:00</p>
+  document.getElementById("strona-glowna").hidden = true;
+  document.getElementById("szczegoly").hidden = false;
 
-      <p>
-        <a class="text-link" href="https://ilsodino.it/"
-           target="_blank" rel="noopener noreferrer">
-          Strona internetowa obiektu ↗
-        </a>
-      </p>
-    </div>
+  history.replaceState(null, "", "#szczegoly");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-    <div class="info-card">
-      <h3>☀️ Co zabrać?</h3>
+function pokazPoczatek() {
+  document.getElementById("szczegoly").hidden = true;
+  document.getElementById("strona-glowna").hidden = false;
 
-      <p>
-        Postaw na coś, w czym czujesz się pięknie i wygodnie.
-        Bez sztywnego dress code’u — elegancko, swobodnie i po swojemu.
-        Najważniejsze, żebyście czuli się dobrze i mogli w pełni cieszyć
-        się wspólnym świętowaniem. ❤️ Pamiętajcie też, że spędzimy razem
-        kilka dni we włoskim klimacie, więc przydadzą się zarówno
-        stylizacje na wyjątkowy wieczór, jak i coś luźniejszego
-        na odpoczynek przy basenie.
-      </p>
-
-      <div>
-        <span class="pill">słońce</span>
-        <span class="pill">wygodne buty</span>
-        <span class="pill">strój kąpielowy</span>
-        <span class="pill">dobry humor</span>
-        <span class="pill">włoski luz</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="odserca">
-    <div class="section-label">Od serca</div>
-    <h2>Najważniejsza jest Wasza obecność</h2>
-
-    <p>
-      Najbardziej cieszymy się na to, że spędzimy z Wami ten wyjątkowy czas.
-      Nie możemy doczekać się wspólnych toastów, rozmów, śmiechu i wspomnień,
-      do których będziemy wracać przez długie lata.
-    </p>
-  </section>
-
-  <section class="rsvp" id="kontakt">
-    <div class="section-label">Daj nam znać</div>
-    <h2>Potwierdzenie obecności</h2>
-
-    <p>
-      Będziemy bardzo wdzięczni za potwierdzenie obecności tak szybko,
-      jak to możliwe, najlepiej jeszcze przed marcem 2027 roku.
-      Pomoże nam to odpowiednio zaplanować te kilka wyjątkowych dni
-      i dopracować wszystkie szczegóły, abyśmy mogli w pełni cieszyć
-      się tym pięknym czasem razem z Wami! 💌
-    </p>
-  </section>
-
-</main>
-
-<footer>
-  <div>Do zobaczenia w słonecznej Umbrii <span class="heart">♥</span></div>
-  <div class="small">Izabela &amp; Karol · 2027</div>
-
-  <div class="small" style="margin-top:12px">
-    <a href="https://ilsodino.it/" target="_blank" rel="noopener noreferrer">
-      Il Sodino
-    </a>
-    ·
-    <a href="https://www.instagram.com/ilsodino1738/"
-       target="_blank" rel="noopener noreferrer">
-      Instagram
-    </a>
-  </div>
-</footer>
+  history.replaceState(null, "", window.location.pathname);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+</script>
 
 </body>
 </html>
