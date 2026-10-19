@@ -773,20 +773,33 @@ footer .small {
 function pokazSzczegoly(event) {
   if (event) event.preventDefault();
 
-  document.getElementById("strona-glowna").hidden = true;
-  document.getElementById("szczegoly").hidden = false;
-
-  history.replaceState(null, "", "#szczegoly");
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (document.getElementById("szczegoly").hidden) {
+    history.pushState({ widok: "szczegoly" }, "", "#szczegoly");
+    ustawWidok("szczegoly");
+  }
 }
 
 function pokazPoczatek() {
-  document.getElementById("szczegoly").hidden = true;
-  document.getElementById("strona-glowna").hidden = false;
-
-  history.replaceState(null, "", window.location.pathname);
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (!document.getElementById("szczegoly").hidden) {
+    history.back();
+  }
 }
+
+function ustawWidok(widok) {
+  const stronaGlowna = document.getElementById("strona-glowna");
+  const szczegoly = document.getElementById("szczegoly");
+
+  const pokazSzczegoly = widok === "szczegoly";
+
+  stronaGlowna.hidden = pokazSzczegoly;
+  szczegoly.hidden = !pokazSzczegoly;
+
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+window.addEventListener("popstate", function () {
+  ustawWidok("poczatek");
+});
 </script>
 
 </body>
